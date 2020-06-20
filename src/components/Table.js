@@ -1,8 +1,14 @@
 import React from "react";
 
+const styles = {
+  table: {
+    marginTop: 30
+  }
+}
+
 function Table() {
     return (
-        <table class="table">
+        <table style={styles.table} class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">image</th>
