@@ -1,11 +1,28 @@
 import React from "react";
 
+const styles = {
+  search: {
+    margin: 30
+  }
+}
+
 function Search() {
     return (
-      
+      <form>
+      <div style={styles.search} className="form-group">
+        <input
+          // onChange={props.handleInputChange}
+          // value={props.value}
+          name="search"
+          type="text"
+          className="form-control"
+          placeholder="Search"
+          id="search"
+        />
+        </div>
+    </form>
     );
   }
   
   export default Search;
 
-//   make a class component
