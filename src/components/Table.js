@@ -12,7 +12,8 @@ const styles = {
 
 class Table extends React.Component {
   state = {
-    result: {},
+    result: [],
+    originalResult: [],
     search: ""
   };
 
@@ -26,7 +27,7 @@ class Table extends React.Component {
     API.search(query)
       .then(res => {
         console.log(res.data)
-        this.setState({ result: res.data })})
+        this.setState({ result: res.data.results, originalResult: res.data.results })})
       .catch(err => console.log(err));
   };
 
@@ -36,12 +37,28 @@ class Table extends React.Component {
     this.setState({
       [name]: value
     });
+    const newResult = this.state.originalResult.length > 0 ? this.state.originalResult.filter(employee => {
+      console.log(employee)
+      return employee.name.first.toLowerCase().includes(value.toLowerCase()) || employee.name.last.toLowerCase().includes(value.toLowerCase()) 
+    }): []
+    console.log(newResult)
+    this.setState({result: newResult})
   };
 
   // When the form is submitted, search the OMDB API for the value of `this.state.search`
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.searchTable(this.state.search);
+  handleFormSubmit = colName => {
+    // event.preventDefault();
+    // this.searchTable(this.state.search); 
+    let newResult = null
+
+    if(colName === "first") 
+    { newResult = this.state.result.length > 0 ? this.state.result.sort((a, b) => a.name.first.localeCompare(b.name.first)):
+    []}
+    else if(colName === "email") {
+      newResult = this.state.result.length > 0 ? this.state.result.sort((a, b) => a.email.localeCompare(b.email)):
+    []
+    }
+    this.setState({result: newResult})
   };
 
 
@@ -56,35 +73,29 @@ render() {
       handleInputChange={this.handleInputChange}
       handleFormSubmit={this.handleFormSubmit}
       />
-        <table style={styles.table} class="table">
-        <thead class="thead-dark">
+        <table style={styles.table} className="table">
+        <thead className="thead-dark">
           <tr>
             <th scope="col">image</th>
-            <th scope="col">Name</th>
+            <th scope="col" onClick={() => {this.handleFormSubmit("first")}}>Name</th>
             <th scope="col">Phone</th>
-            <th scope="col">Email</th>
+            <th scope="col" onClick={() => {this.handleFormSubmit("email")}}>Email</th>
             <th scope="col">DOB</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {this.state.result.length > 0 ?
+          this.state.result.map((employee, index) =>{
+            return(<tr key={index}>
+              <td><img src={employee.picture.thumbnail} alt="employee"/></td>
+              <td>{employee.name.first + " " + employee.name.last}</td>
+              <td>{employee.cell}</td>
+              <td>{employee.email}</td>
+              <td>{employee.dob.date}</td>
+            </tr>)
+          }) :
+          ""
+          } 
         </tbody>
       </table>
       </div>
