@@ -19,11 +19,14 @@ class Table extends React.Component {
   // When this component mounts, search for the movie "The Matrix"
   componentDidMount() {
     this.searchTable("");
+    console.log(this.state.result)
   }
 
   searchTable = query => {
     API.search(query)
-      .then(res => this.setState({ result: res.data }))
+      .then(res => {
+        console.log(res.data)
+        this.setState({ result: res.data })})
       .catch(err => console.log(err));
   };
 
@@ -48,7 +51,11 @@ render() {
     return (
       <div>
       <Header/>
-      <Search/>
+      <Search
+      value={this.state.search}
+      handleInputChange={this.handleInputChange}
+      handleFormSubmit={this.handleFormSubmit}
+      />
         <table style={styles.table} class="table">
         <thead class="thead-dark">
           <tr>
