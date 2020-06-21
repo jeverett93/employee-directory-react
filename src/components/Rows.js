@@ -8,4 +8,3 @@ function Rows() {
   
   export default Rows;
 
-  //   make a class component

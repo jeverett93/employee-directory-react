@@ -1,4 +1,8 @@
 import React from "react";
+import Header from './Header'
+import Search from './Search'
+// import Rows from "./Rows";
+import API from "../utils/API";
 
 const styles = {
   table: {
@@ -6,8 +10,45 @@ const styles = {
   }
 }
 
-function Table() {
+class Table extends React.Component {
+  state = {
+    result: {},
+    search: ""
+  };
+
+  // When this component mounts, search for the movie "The Matrix"
+  componentDidMount() {
+    this.searchTable("");
+  }
+
+  searchTable = query => {
+    API.search(query)
+      .then(res => this.setState({ result: res.data }))
+      .catch(err => console.log(err));
+  };
+
+  handleInputChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  // When the form is submitted, search the OMDB API for the value of `this.state.search`
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.searchTable(this.state.search);
+  };
+
+
+
+
+render() {
     return (
+      <div>
+      <Header/>
+      <Search/>
         <table style={styles.table} class="table">
         <thead class="thead-dark">
           <tr>
@@ -39,8 +80,11 @@ function Table() {
           </tr>
         </tbody>
       </table>
+      </div>
     );
   }
+
+}
   
   export default Table;
 
