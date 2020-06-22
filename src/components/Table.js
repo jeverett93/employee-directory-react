@@ -1,8 +1,8 @@
 import React from "react";
-import Header from './Header'
-import Search from './Search'
-// import Rows from "./Rows";
+import Header from './Header';
+import Search from './Search';
 import API from "../utils/API";
+import moment from "moment"
 
 const styles = {
   table: {
@@ -39,7 +39,7 @@ class Table extends React.Component {
     });
     const newResult = this.state.originalResult.length > 0 ? this.state.originalResult.filter(employee => {
       console.log(employee)
-      return employee.name.first.toLowerCase().includes(value.toLowerCase()) || employee.name.last.toLowerCase().includes(value.toLowerCase()) 
+      return employee.name.first.toLowerCase().includes(value.toLowerCase()) || employee.name.last.toLowerCase().includes(value.toLowerCase()) || employee.email.toLowerCase().includes(value.toLowerCase()) || employee.cell.includes(value)
     }): []
     console.log(newResult)
     this.setState({result: newResult})
@@ -91,7 +91,7 @@ render() {
               <td>{employee.name.first + " " + employee.name.last}</td>
               <td>{employee.cell}</td>
               <td>{employee.email}</td>
-              <td>{employee.dob.date}</td>
+              <td>{moment(employee.dob.date).format()}</td>
             </tr>)
           }) :
           ""
