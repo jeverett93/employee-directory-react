@@ -41,7 +41,7 @@ class Table extends React.Component {
     });
     const newResult = this.state.originalResult.length > 0 ? this.state.originalResult.filter(employee => {
       console.log(employee)
-      return employee.name.first.toLowerCase().includes(value.toLowerCase()) || employee.name.last.toLowerCase().includes(value.toLowerCase()) || employee.email.toLowerCase().includes(value.toLowerCase()) || employee.cell.includes(value)
+      return employee.name.first.toLowerCase().includes(value.toLowerCase()) || employee.name.last.toLowerCase().includes(value.toLowerCase()) || employee.email.toLowerCase().includes(value.toLowerCase()) || employee.cell.includes(value) || moment(employee.dob.date).format("MM/DD/YYYY").includes(value)
     }): []
     console.log(newResult)
     this.setState({result: newResult})
