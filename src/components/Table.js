@@ -58,6 +58,10 @@ class Table extends React.Component {
       newResult = this.state.result.length > 0 ? this.state.result.sort((a, b) => a.email.localeCompare(b.email)):
     []
     }
+    else if(colName === "dob") {
+      newResult = this.state.result.length > 0 ? this.state.result.sort((a, b) => a.dob.date.localeCompare(b.dob.date)):
+    []
+    }
     this.setState({result: newResult})
   };
 
@@ -80,7 +84,7 @@ render() {
             <th scope="col" onClick={() => {this.handleFormSubmit("first")}}>Name</th>
             <th scope="col">Phone</th>
             <th scope="col" onClick={() => {this.handleFormSubmit("email")}}>Email</th>
-            <th scope="col">DOB</th>
+            <th scope="col" onClick={() => {this.handleFormSubmit("dob")}}>DOB</th>
           </tr>
         </thead>
         <tbody>
@@ -91,7 +95,7 @@ render() {
               <td>{employee.name.first + " " + employee.name.last}</td>
               <td>{employee.cell}</td>
               <td>{employee.email}</td>
-              <td>{moment(employee.dob.date).format()}</td>
+              <td>{moment(employee.dob.date).format("MM/DD/YYYY")}</td>
             </tr>)
           }) :
           ""
