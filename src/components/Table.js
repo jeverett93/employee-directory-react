@@ -3,10 +3,11 @@ import Header from './Header';
 import Search from './Search';
 import API from "../utils/API";
 import moment from "moment"
+import './table.css';
 
 const styles = {
   table: {
-    marginTop: 30
+    margin: 30
   }
 }
 

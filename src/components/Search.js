@@ -1,14 +1,15 @@
 import React from "react";
+import './search.css';
 
 const styles = {
   search: {
-    margin: 30
+    margin: 30,
   }
 }
 
 function Search(props) {
     return (
-      <form>
+      <form className="search-bar">
       <div style={styles.search} className="form-group">
         <input
           onChange={props.handleInputChange}
