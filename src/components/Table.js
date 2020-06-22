@@ -3,7 +3,8 @@ import Header from './Header';
 import Search from './Search';
 import API from "../utils/API";
 import moment from "moment"
-import './table.css';
+import "../styles/table.css";
+
 
 const styles = {
   table: {

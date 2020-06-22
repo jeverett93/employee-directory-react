@@ -1,6 +1,7 @@
 .header {
   background: #f9b713;
   height: 200px;
+  color: white;
 }
 
 .header h1 {
@@ -9,4 +10,9 @@
   text-align: center;
   color: white;
   font-size: 3rem;
+}
+
+.header p {
+  margin-top: 10px;
+  font-size: large
 }
