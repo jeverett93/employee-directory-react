@@ -112,4 +112,3 @@ render() {
   
   export default Table;
 
-  //   make a class component
