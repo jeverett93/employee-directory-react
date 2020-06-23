@@ -1,6 +1,8 @@
+// importing necessary dependency and style file
 import React from "react";
 import "../styles/Header.css";
 
+// Header component
 function Header() {
   return (
     <header className="header">
@@ -10,4 +12,5 @@ function Header() {
   );
 }
 
+// exporting component to be used in other parts of the application
 export default Header;
