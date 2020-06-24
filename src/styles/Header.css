@@ -18,3 +18,9 @@
   margin-top: 10px;
   font-size: medium
 }
+
+@media screen and (max-width: 400px) {
+    .header p {
+      padding: 5px;
+    }
+}

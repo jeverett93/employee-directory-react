@@ -1,3 +1,33 @@
 .table{
     width: 90%;
 }
+
+@media screen and (max-width: 1920px) {
+    .table{
+        margin-left: 33%!important;
+    }
+}
+
+@media screen and (max-width: 1680px) {
+    .table{
+        margin-left: 24%!important;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .table{
+        margin-left: 23%!important;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .table{
+        margin-left: 18%!important;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .table{
+        margin-left: 13%!important;
+    }
+}

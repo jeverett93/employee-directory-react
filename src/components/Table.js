@@ -83,7 +83,7 @@ class Table extends React.Component {
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
-        <table style={styles.table} className="table">
+        <table style={styles.table} className="table table-responsive">
           <thead className="thead-dark">
             <tr>
               {/* click events to sort categories */}
@@ -110,7 +110,7 @@ class Table extends React.Component {
             }
           </tbody>
         </table>
-      </div>
+        </div>
     );
   }
 }
