@@ -11,8 +11,8 @@ const styles = {
 
 // search bar component with props passed from parent component
 function Search(props) {
-    return (
-      <form className="search-bar">
+  return (
+    <form>
       <div style={styles.search} className="form-group">
         {/* props passed to allow search bar to handle and process input changes */}
         <input
@@ -24,11 +24,11 @@ function Search(props) {
           placeholder="Search"
           id="search"
         />
-        </div>
+      </div>
     </form>
-    );
-  }
-  
-  // exporting search bar component to be used in other parts of the application
-  export default Search;
+  );
+}
+
+// exporting search bar component to be used in other parts of the application
+export default Search;
 
