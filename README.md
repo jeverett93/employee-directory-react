@@ -35,7 +35,7 @@ This an app that allows users to view an employee directory as soon as the page 
     npm start
     ```
 ## <h2 id="tech">Technology Stack</h2>
-Node.Js, JavaScript, GIT, GitHub, HTML, CSS, Bootstrap, React, Axios call to RandomUser API, Service Worker, Web Manifest, Moment
+JavaScript, GIT, GitHub, HTML, CSS, Bootstrap, React, Axios call to RandomUser API, Service Worker, Web Manifest, Moment
 
 ## <h2 id="usage">Usage</h2>
 
